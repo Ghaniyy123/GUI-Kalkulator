@@ -407,6 +407,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
 
     private void oneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneButtonActionPerformed
         // TODO add your handling code here:
+        calcNumber("1");
     }//GEN-LAST:event_oneButtonActionPerformed
 
     private void twoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoButtonActionPerformed
