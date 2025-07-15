@@ -13,6 +13,10 @@ public class FrameKalkulator extends javax.swing.JFrame {
     /**
      * Creates new form FrameKalkulator
      */
+    private boolean charAwal = true; //Nunjukin kalo ada angka(1-9) dah masuk, dan juga (,), biar angka 0 enak
+    private boolean adaKoma = false; //Nunjukin di suatu angka, hanya bisa 1 koma
+    private final char[] allOp = {'+','-','x','÷'};
+            
     public FrameKalkulator() {
         initComponents();
     }
@@ -57,6 +61,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
 
         textFieldKalkulator.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         textFieldKalkulator.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        textFieldKalkulator.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         textFieldKalkulator.setPreferredSize(new java.awt.Dimension(338, 96));
 
         acButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
@@ -347,14 +352,48 @@ public class FrameKalkulator extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void calcNumber(String addTextF)
+    private void addItem(String addTextF)
     {
         String textF = textFieldKalkulator.getText() + addTextF;
         textFieldKalkulator.setText(textF);
     }
     
+    private boolean cekOp(char usedOp)
+    {
+        for (char Op : allOp)
+        {
+            if (usedOp == Op)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    private void gantiOp(String usedOp)
+    {
+        deleteOneNumber();
+        addItem(usedOp);
+    }
+    
+    private void deleteOneNumber()
+    {
+        String text = textFieldKalkulator.getText();
+        StringBuilder sb = new StringBuilder(text);
+        sb.deleteCharAt(text.length() - 1);
+        textFieldKalkulator.setText(sb.toString());
+    }
+    
+    private void resetVar()
+    {
+        charAwal = true;
+        adaKoma = false;
+    }
+    
     private void acButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acButtonActionPerformed
         // TODO add your handling code here:
+        textFieldKalkulator.setText("");
+        resetVar();
     }//GEN-LAST:event_acButtonActionPerformed
 
     private void plusMinusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusMinusButtonActionPerformed
@@ -363,92 +402,375 @@ public class FrameKalkulator extends javax.swing.JFrame {
 
     private void percentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percentButtonActionPerformed
         // TODO add your handling code here:
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {}
+        else if (text.charAt(text.length() - 1) == '0' || text.charAt(text.length() - 1) == '%') //Karena 0 char awal (biar kalo mau masukin angka(1-9) jadi keganti), maka hrus buat ini
+        {
+            addItem("%");
+            resetVar();
+        }
+        else if (charAwal == false && text.charAt(text.length() - 1) != ',') //Udah ada angka (1-9) dan bukan akhiran koma, baru bisa dimasukin
+        {
+            addItem("%");
+            resetVar();
+        }
     }//GEN-LAST:event_percentButtonActionPerformed
 
     private void divideButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_divideButtonActionPerformed
         // TODO add your handling code here:
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {}
+        else if (text.length() == 1 && text.charAt(text.length() - 1) == '-')
+        {}
+        else if (text.charAt(text.length() - 1) == '0' || text.charAt(text.length() - 1) == '%')
+        {
+            addItem("÷");
+            resetVar();
+        }
+        else if (charAwal == false && text.charAt(text.length() - 1) != ',')
+        {
+            addItem("÷");
+            resetVar();
+        }
+        else if((text.charAt(text.length() - 2) == 'x' || text.charAt(text.length() - 2) == '÷'))
+        {
+            deleteOneNumber(); //auto resetVar();
+            gantiOp("÷");
+        }
+        else if(charAwal == true && cekOp(text.charAt(text.length() - 1)) == true)
+        {
+            gantiOp("÷"); //auto resetVar();
+        }
     }//GEN-LAST:event_divideButtonActionPerformed
 
     private void timeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeButtonActionPerformed
         // TODO add your handling code here:
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {}
+        else if (text.length() == 1 && text.charAt(text.length() - 1) == '-')
+        {}
+        else if (text.charAt(text.length() - 1) == '0' || text.charAt(text.length() - 1) == '%')
+        {
+            addItem("x");
+            resetVar();
+        }
+        else if (charAwal == false && text.charAt(text.length() - 1) != ',')
+        {
+            addItem("x");
+            resetVar();
+        }
+        else if((text.charAt(text.length() - 2) == 'x' || text.charAt(text.length() - 2) == '÷'))
+        {
+            deleteOneNumber(); //auto resetVar();
+            gantiOp("x");
+        }
+        else if(charAwal == true && cekOp(text.charAt(text.length() - 1)) == true)
+        {
+            gantiOp("x"); //auto resetVar();
+        }
     }//GEN-LAST:event_timeButtonActionPerformed
 
     private void minButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minButtonActionPerformed
         // TODO add your handling code here:
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {
+            addItem("-");
+        }
+        else if (text.charAt(text.length() - 1) == '0' || text.charAt(text.length() - 1) == '%' || 
+                 text.charAt(text.length() - 1) == 'x'|| text.charAt(text.length() - 1) == '÷')
+        {
+            addItem("-");
+            resetVar();
+        }
+        else if (charAwal == false && text.charAt(text.length() - 1) != ',')
+        {
+            addItem("-");
+            resetVar();
+        }
+        else if (charAwal == true && text.charAt(text.length() - 1) == '+')
+        {
+            gantiOp("-");
+        }
     }//GEN-LAST:event_minButtonActionPerformed
 
     private void plusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusButtonActionPerformed
         // TODO add your handling code here:
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {}
+        else if ((text.length() == 1 && text.charAt(text.length() - 1) == '-'))
+        {}
+        else if (text.charAt(text.length() - 1) == '0' || text.charAt(text.length() - 1) == '%')
+        {
+            addItem("+");
+            resetVar();
+        }
+        else if (charAwal == false && text.charAt(text.length() - 1) != ',')
+        {
+            addItem("+");
+            resetVar();
+        }
+        else if((text.charAt(text.length() - 2) == 'x' || text.charAt(text.length() - 2) == '÷'))
+        {
+            deleteOneNumber(); //auto resetVar();
+        }
+        else if(charAwal == true && (cekOp(text.charAt(text.length() - 1)) == true))
+        {
+            gantiOp("+"); //auto resetVar();
+        }
     }//GEN-LAST:event_plusButtonActionPerformed
 
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_enterButtonActionPerformed
 
     private void komaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_komaButtonActionPerformed
         // TODO add your handling code here:
+        String text = textFieldKalkulator.getText();
+        if (charAwal == true && adaKoma == false)
+        {
+            if (text.charAt(text.length() - 1) == '0')
+            {
+                addItem(",");
+                adaKoma = true;
+            }
+            else
+            {
+                addItem("0,");
+                adaKoma = true;
+            }
+        }
+        else if (charAwal == false && adaKoma == false)
+        {
+            addItem(",");
+            adaKoma = true;
+        }
     }//GEN-LAST:event_komaButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
         String text = textFieldKalkulator.getText();
         
+        deleteOneNumber();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void zeroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroButtonActionPerformed
         // TODO add your handling code here:
-        String text = textFieldKalkulator.getText();
-        if (text.length() == 1 && text.charAt(0) == '0')
+        String text = textFieldKalkulator.getText(); //Selama 0 dan True ga akan bisa nambah 0
+        if (text.length() == 0)
         {
-            
-        } else {
-            calcNumber("0");
+            addItem("0");
+        }
+        else if (text.charAt(text.length() - 1) == '0')
+        {
+            if(charAwal == false)
+            {
+                addItem("0");
+            }
+        }
+        else if (adaKoma == true)
+        {
+            addItem("0");
+            charAwal = false;
+        }
+        else
+        {
+            addItem("0");
         }
     }//GEN-LAST:event_zeroButtonActionPerformed
 
     private void oneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneButtonActionPerformed
         // TODO add your handling code here:
-        calcNumber("1");
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {
+            addItem("1");
+            charAwal = false;
+        }
+        else if (charAwal == true && text.charAt(text.length()-1) == '0')
+        {
+            deleteOneNumber();
+            addItem("1");
+            charAwal = false;
+        }
+        else
+        {
+            addItem("1");
+            charAwal = false;
+        }
     }//GEN-LAST:event_oneButtonActionPerformed
 
     private void twoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoButtonActionPerformed
         // TODO add your handling code here:
-        calcNumber("2");
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {
+            addItem("2");
+            charAwal = false;
+        }
+        else if (charAwal == true && text.charAt(text.length()-1) == '0')
+        {
+            deleteOneNumber();
+            addItem("2");
+            charAwal = false;
+        }
+        else
+        {
+            addItem("2");
+            charAwal = false;
+        }
     }//GEN-LAST:event_twoButtonActionPerformed
 
     private void threeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeButtonActionPerformed
         // TODO add your handling code here:
-        calcNumber("3");
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {
+            addItem("3");
+            charAwal = false;
+        }
+        else if (charAwal == true && text.charAt(text.length()-1) == '0')
+        {
+            deleteOneNumber();
+            addItem("3");
+            charAwal = false;
+        }
+        else
+        {
+            addItem("3");
+            charAwal = false;
+        }
     }//GEN-LAST:event_threeButtonActionPerformed
 
     private void fourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fourButtonActionPerformed
         // TODO add your handling code here:
-        calcNumber("4");
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {
+            addItem("4");
+            charAwal = false;
+        }
+        else if (charAwal == true && text.charAt(text.length()-1) == '0')
+        {
+            deleteOneNumber();
+            addItem("4");
+            charAwal = false;
+        }
+        else
+        {
+            addItem("4");
+            charAwal = false;
+        }
     }//GEN-LAST:event_fourButtonActionPerformed
 
     private void fiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiveButtonActionPerformed
         // TODO add your handling code here:
-        calcNumber("5");
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {
+            addItem("5");
+            charAwal = false;
+        }
+        else if (charAwal == true && text.charAt(text.length()-1) == '0')
+        {
+            deleteOneNumber();
+            addItem("5");
+            charAwal = false;
+        }
+        else
+        {
+            addItem("5");
+            charAwal = false;
+        }
     }//GEN-LAST:event_fiveButtonActionPerformed
 
     private void sixButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sixButtonActionPerformed
         // TODO add your handling code here:
-        calcNumber("6");
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {
+            addItem("6");
+            charAwal = false;
+        }
+        else if (charAwal == true && text.charAt(text.length()-1) == '0')
+        {
+            deleteOneNumber();
+            addItem("6");
+            charAwal = false;
+        }
+        else
+        {
+            addItem("6");
+            charAwal = false;
+        }
     }//GEN-LAST:event_sixButtonActionPerformed
 
     private void sevenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sevenButtonActionPerformed
         // TODO add your handling code here:
-        calcNumber("7");
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {
+            addItem("7");
+            charAwal = false;
+        }
+        else if (charAwal == true && text.charAt(text.length()-1) == '0')
+        {
+            deleteOneNumber();
+            addItem("7");
+            charAwal = false;
+        }
+        else
+        {
+            addItem("7");
+            charAwal = false;
+        }
     }//GEN-LAST:event_sevenButtonActionPerformed
 
     private void eightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eightButtonActionPerformed
         // TODO add your handling code here:
-        calcNumber("8");
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {
+            addItem("8");
+            charAwal = false;
+        }
+        else if (charAwal == true && text.charAt(text.length()-1) == '0')
+        {
+            deleteOneNumber();
+            addItem("8");
+            charAwal = false;
+        }
+        else
+        {
+            addItem("8");
+            charAwal = false;
+        }
     }//GEN-LAST:event_eightButtonActionPerformed
 
     private void nineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nineButtonActionPerformed
         // TODO add your handling code here:
-        calcNumber("9");
+        String text = textFieldKalkulator.getText();
+        if (text.length() == 0)
+        {
+            addItem("9");
+            charAwal = false;
+        }
+        else if (charAwal == true && text.charAt(text.length()-1) == '0')
+        {
+            deleteOneNumber();
+            addItem("9");
+            charAwal = false;
+        }
+        else
+        {
+            addItem("9");
+            charAwal = false;
+        }
     }//GEN-LAST:event_nineButtonActionPerformed
 
     /**
