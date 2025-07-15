@@ -391,6 +391,8 @@ public class FrameKalkulator extends javax.swing.JFrame {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
+        String text = textFieldKalkulator.getText();
+        
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void zeroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroButtonActionPerformed
@@ -402,7 +404,6 @@ public class FrameKalkulator extends javax.swing.JFrame {
         } else {
             calcNumber("0");
         }
-        
     }//GEN-LAST:event_zeroButtonActionPerformed
 
     private void oneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneButtonActionPerformed
@@ -412,34 +413,42 @@ public class FrameKalkulator extends javax.swing.JFrame {
 
     private void twoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoButtonActionPerformed
         // TODO add your handling code here:
+        calcNumber("2");
     }//GEN-LAST:event_twoButtonActionPerformed
 
     private void threeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeButtonActionPerformed
         // TODO add your handling code here:
+        calcNumber("3");
     }//GEN-LAST:event_threeButtonActionPerformed
 
     private void fourButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fourButtonActionPerformed
         // TODO add your handling code here:
+        calcNumber("4");
     }//GEN-LAST:event_fourButtonActionPerformed
 
     private void fiveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiveButtonActionPerformed
         // TODO add your handling code here:
+        calcNumber("5");
     }//GEN-LAST:event_fiveButtonActionPerformed
 
     private void sixButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sixButtonActionPerformed
         // TODO add your handling code here:
+        calcNumber("6");
     }//GEN-LAST:event_sixButtonActionPerformed
 
     private void sevenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sevenButtonActionPerformed
         // TODO add your handling code here:
+        calcNumber("7");
     }//GEN-LAST:event_sevenButtonActionPerformed
 
     private void eightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eightButtonActionPerformed
         // TODO add your handling code here:
+        calcNumber("8");
     }//GEN-LAST:event_eightButtonActionPerformed
 
     private void nineButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nineButtonActionPerformed
         // TODO add your handling code here:
+        calcNumber("9");
     }//GEN-LAST:event_nineButtonActionPerformed
 
     /**
