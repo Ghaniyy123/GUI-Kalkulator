@@ -4,6 +4,7 @@
  */
 package Gui_Kalkulator;
 
+import java.util.ArrayList;
 /**
  *
  * @author MSI
@@ -31,6 +32,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
     private void initComponents() {
 
         panelKalkulator = new javax.swing.JPanel();
+        textFieldAfterKalk = new javax.swing.JTextField();
         textFieldKalkulator = new javax.swing.JTextField();
         acButton = new javax.swing.JButton();
         plusMinusButton = new javax.swing.JButton();
@@ -58,11 +60,24 @@ public class FrameKalkulator extends javax.swing.JFrame {
 
         panelKalkulator.setBackground(new java.awt.Color(204, 204, 204));
         panelKalkulator.setPreferredSize(new java.awt.Dimension(350, 500));
+        panelKalkulator.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        textFieldKalkulator.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        textFieldAfterKalk.setEditable(false);
+        textFieldAfterKalk.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        textFieldAfterKalk.setForeground(new java.awt.Color(153, 153, 153));
+        textFieldAfterKalk.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        textFieldAfterKalk.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        textFieldAfterKalk.setFocusable(false);
+        textFieldAfterKalk.setPreferredSize(new java.awt.Dimension(338, 22));
+        panelKalkulator.add(textFieldAfterKalk, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 10, -1, -1));
+
+        textFieldKalkulator.setEditable(false);
+        textFieldKalkulator.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
         textFieldKalkulator.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        textFieldKalkulator.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         textFieldKalkulator.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        textFieldKalkulator.setPreferredSize(new java.awt.Dimension(338, 96));
+        textFieldKalkulator.setPreferredSize(new java.awt.Dimension(338, 80));
+        panelKalkulator.add(textFieldKalkulator, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 22, -1, -1));
 
         acButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         acButton.setText("AC");
@@ -72,6 +87,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 acButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(acButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 120, -1, -1));
 
         plusMinusButton.setFont(new java.awt.Font("Segoe UI", 0, 34)); // NOI18N
         plusMinusButton.setText("+/-");
@@ -81,6 +97,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 plusMinusButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(plusMinusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 120, -1, -1));
 
         percentButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         percentButton.setText("%");
@@ -90,6 +107,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 percentButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(percentButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 120, -1, -1));
 
         divideButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         divideButton.setText("÷");
@@ -99,6 +117,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 divideButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(divideButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 120, -1, -1));
 
         timeButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         timeButton.setText("x");
@@ -108,6 +127,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 timeButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(timeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 196, -1, -1));
 
         minButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         minButton.setText("-");
@@ -117,6 +137,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 minButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(minButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 272, -1, -1));
 
         plusButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         plusButton.setText("+");
@@ -126,6 +147,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 plusButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(plusButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 348, -1, -1));
 
         enterButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         enterButton.setText("=");
@@ -135,6 +157,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 enterButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(enterButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 424, -1, -1));
 
         komaButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         komaButton.setText(",");
@@ -144,6 +167,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 komaButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(komaButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 424, -1, -1));
 
         deleteButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         deleteButton.setText("<-");
@@ -153,6 +177,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 deleteButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 424, -1, -1));
 
         zeroButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         zeroButton.setText("0");
@@ -162,6 +187,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 zeroButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(zeroButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 424, -1, -1));
 
         oneButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         oneButton.setText("1");
@@ -171,6 +197,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 oneButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(oneButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 348, -1, -1));
 
         twoButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         twoButton.setText("2");
@@ -180,6 +207,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 twoButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(twoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 348, -1, -1));
 
         threeButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         threeButton.setText("3");
@@ -189,6 +217,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 threeButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(threeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 348, -1, -1));
 
         fourButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         fourButton.setText("4");
@@ -198,6 +227,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 fourButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(fourButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 272, -1, -1));
 
         fiveButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         fiveButton.setText("5");
@@ -207,6 +237,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 fiveButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(fiveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 272, -1, -1));
 
         sixButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         sixButton.setText("6");
@@ -216,6 +247,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 sixButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(sixButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 272, -1, -1));
 
         sevenButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         sevenButton.setText("7");
@@ -225,6 +257,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 sevenButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(sevenButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 196, -1, -1));
 
         eightButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         eightButton.setText("8");
@@ -234,6 +267,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 eightButtonActionPerformed(evt);
             }
         });
+        panelKalkulator.add(eightButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 196, -1, -1));
 
         nineButton.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         nineButton.setText("9");
@@ -243,96 +277,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
                 nineButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout panelKalkulatorLayout = new javax.swing.GroupLayout(panelKalkulator);
-        panelKalkulator.setLayout(panelKalkulatorLayout);
-        panelKalkulatorLayout.setHorizontalGroup(
-            panelKalkulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKalkulatorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelKalkulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textFieldKalkulator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelKalkulatorLayout.createSequentialGroup()
-                        .addComponent(acButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(plusMinusButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(percentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(divideButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(panelKalkulatorLayout.createSequentialGroup()
-                        .addComponent(sevenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(eightButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nineButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(timeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelKalkulatorLayout.createSequentialGroup()
-                        .addComponent(fourButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fiveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(sixButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(minButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelKalkulatorLayout.createSequentialGroup()
-                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(zeroButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(komaButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(enterButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelKalkulatorLayout.createSequentialGroup()
-                        .addComponent(oneButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(twoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(threeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(plusButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        panelKalkulatorLayout.setVerticalGroup(
-            panelKalkulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelKalkulatorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(textFieldKalkulator, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(panelKalkulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelKalkulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(acButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(percentButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(divideButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(plusMinusButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelKalkulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sevenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eightButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nineButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(timeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelKalkulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fourButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fiveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sixButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(minButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelKalkulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(oneButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(twoButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(threeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(plusButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelKalkulatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(zeroButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(komaButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enterButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        panelKalkulator.add(nineButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 196, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -340,7 +285,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelKalkulator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 287, Short.MAX_VALUE))
+                .addContainerGap(356, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,6 +335,191 @@ public class FrameKalkulator extends javax.swing.JFrame {
         adaKoma = false;
     }
     
+    private String Hitung(String text)
+    {
+        ArrayList<String> listString = new ArrayList<>();
+        char charIni;
+        char charDepan;
+        String arrayItem = new String();
+        
+        //Pemisah String jadi Array
+        for (int i = 0; i < (text.length()); i++)
+        {
+            charIni = text.charAt(i);
+            charDepan = text.charAt(i+1);
+            if (charIni == 'E' && charDepan == '-') //E-
+            {
+                arrayItem += "E-";
+                i++;
+            }
+            else if ((charIni == 'x' && charDepan == '-') || (charIni == '÷' && charDepan == '-')) //x- ÷-
+            {
+                listString.add(arrayItem);
+                arrayItem = "";
+                arrayItem += "" + charIni;
+                arrayItem += "" + charDepan;
+                listString.add(arrayItem);
+                arrayItem = "";
+                i++;
+            }
+            else if (charIni == 'x' || charIni == '+' || charIni == '-' || charIni == '÷' ) //x + - ÷
+            {
+                listString.add(arrayItem);
+                arrayItem = "";
+                listString.add("" + charIni);
+            }
+            else if (charIni == '%' ) //khusus persen
+            {
+            	listString.add(arrayItem);
+            	arrayItem = "" + charIni;
+            }
+            else if (charIni == '_') // buat nge end loop (dari _)
+            {
+            	listString.add(arrayItem);
+            	i++;
+            }
+            else // angka biasa
+            {
+                if (charIni == ',')
+                {
+                    arrayItem += "" + '.';
+                }
+                else
+                {
+                    arrayItem += "" + charIni;
+                }
+            }
+        }
+        //Pemisah selesai
+            
+        String stringIni;
+        double HasilDouble;
+        
+        //Hitung Persen
+        for(int i = 0; i < listString.size(); i++)
+        {
+            HasilDouble = 0.0;
+            stringIni = listString.get(i);
+            if (stringIni.equals("%"))
+            {
+                HasilDouble = Double.parseDouble(listString.get(i-1)) / 100;
+                listString.remove(i-1);
+                listString.remove(i-1);
+                listString.add(i-1, String.valueOf(HasilDouble));
+                i -= 1;
+            }
+        }
+        //Persen Selesai
+        
+        //Hitung PerkaliandanPembagian
+        for (int i = 0; i < listString.size(); i++)
+        {
+            HasilDouble = 0.0;
+            stringIni = listString.get(i);
+            if (stringIni.equals("x") || stringIni.equals("÷") || stringIni.equals("x-") || stringIni.equals("÷-"))
+            {
+                if (stringIni.equals("÷"))
+                {
+                    HasilDouble = Double.parseDouble(listString.get(i-1)) / Double.parseDouble(listString.get(i+1));
+                    listString.remove(i-1);
+                    listString.remove(i-1);
+                    listString.remove(i-1);
+                    listString.add(i-1, String.valueOf(HasilDouble)); // mengubah hasil dari double ke string;
+                    i -= 1;
+                }
+                else if (stringIni.equals("x"))
+                {
+                    HasilDouble = Double.parseDouble(listString.get(i-1)) * Double.parseDouble(listString.get(i+1));
+                    listString.remove(i-1);
+                    listString.remove(i-1);
+                    listString.remove(i-1);
+                    listString.add(i-1, String.valueOf(HasilDouble)); // mengubah hasil dari double ke string;
+                    i -= 1;
+                }
+                else if (stringIni.equals("x-"))
+                {
+                    HasilDouble = Double.parseDouble(listString.get(i-1)) * -1 * Double.parseDouble(listString.get(i+1));
+                    listString.remove(i-1);
+                    listString.remove(i-1);
+                    listString.remove(i-1);
+                    listString.add(i-1, String.valueOf(HasilDouble));
+                    i-=1;
+                }
+                else if (stringIni.equals("÷-"))
+                {
+                    HasilDouble = Double.parseDouble(listString.get(i-1)) * -1 / Double.parseDouble(listString.get(i+1));
+                    listString.remove(i-1);
+                    listString.remove(i-1);
+                    listString.remove(i-1);
+                    listString.add(i-1, String.valueOf(HasilDouble));
+                    i-=1;
+                }
+            }
+        }
+        //Perkalian dan Pembagian Selesai
+        
+        //Hitung Penjumlahan dan Pengurangan
+        for ( int i = 0; i < listString.size(); i++)
+        {
+            HasilDouble = 0.0;
+            stringIni = listString.get(i);
+            if (stringIni.equals("+"))
+            {
+                HasilDouble = Double.parseDouble(listString.get(i-1)) + Double.parseDouble(listString.get(i+1));
+                listString.remove(i-1);
+                listString.remove(i-1);
+                listString.remove(i-1);
+                listString.add(i-1, String.valueOf(HasilDouble));
+                i -= 1;
+            }
+            else if (stringIni.equals("-"))
+            {
+                HasilDouble = Double.parseDouble(listString.get(i-1)) - Double.parseDouble(listString.get(i+1));
+                listString.remove(i-1);
+                listString.remove(i-1);
+                listString.remove(i-1);
+                listString.add(i-1, String.valueOf(HasilDouble));
+                i -= 1;
+            }
+        }
+        //Penjumlahan dan Penguarang Selesai
+        
+        
+        HasilDouble = (double) Double.parseDouble(listString.get(0));
+        double EPSILON = 1e-15;
+        
+        //Menghilangkan angka 0 didepan angka, karena tidak terdeteksi oleh Operator yang ada. (0 + textfield...)
+        listString.add("" + HasilDouble);
+        listString.remove(0);
+        //Menghilangkan angka 0 selesai
+        
+        //Apakah Hasil double atau integer
+        if (Math.abs(HasilDouble - Math.round(HasilDouble)) < EPSILON) //Penjelasan ada di Package Belajar test2.java
+        {
+            charAwal = false; adaKoma = false;
+            int HasilInteger = (int) HasilDouble;
+            return "" + HasilInteger;
+            //Mengirim integer
+        }
+        else
+        {
+            charAwal = false; adaKoma = true;
+            //Mengubah . menjadi ,
+            for ( int i = 0; i < listString.get(0).length(); i++)
+            {
+                if (listString.get(0).charAt(i) == '.')
+                {
+                    listString.add(listString.get(0).replace('.', ','));
+                    listString.remove(0);
+                }
+            }
+            //. menjadi , selesai
+
+            return "" + listString.get(0);
+            //Mengirim String double yang . udah diubah jadi ,
+        }
+    }
+    
     private void acButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acButtonActionPerformed
         // TODO add your handling code here:
         textFieldKalkulator.setText("");
@@ -398,6 +528,18 @@ public class FrameKalkulator extends javax.swing.JFrame {
 
     private void plusMinusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plusMinusButtonActionPerformed
         // TODO add your handling code here:
+        StringBuilder text = new StringBuilder(textFieldKalkulator.getText());
+        if (text.length() == 0)
+        {}
+        else if (text.charAt(0) != '-')
+        {
+            textFieldKalkulator.setText("-" + text);
+        }
+        else if(text.charAt(0) == '-')
+        {
+            text.deleteCharAt(0);
+            textFieldKalkulator.setText(text.toString());
+        }
     }//GEN-LAST:event_plusMinusButtonActionPerformed
 
     private void percentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_percentButtonActionPerformed
@@ -526,26 +668,43 @@ public class FrameKalkulator extends javax.swing.JFrame {
 
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
         // TODO add your handling code here:
-        
+        String text = "0" + textFieldKalkulator.getText() + "__";
+        if (text.charAt(text.length()-3) == 'x' || text.charAt(text.length()-3) == '÷' || 
+                text.charAt(text.length()-3) == '+' || text.charAt(text.length()-3) == '-' || 
+                text.charAt(text.length()-3) == ',') // (-3) Soalnya ada tambahan "0"  dan "__", kalo ga ada ya -1 kayak biasa.
+        {}
+        else
+        {
+            String hasil = Hitung(text);
+            textFieldAfterKalk.setText(textFieldKalkulator.getText());
+            textFieldKalkulator.setText(hasil);
+        }
     }//GEN-LAST:event_enterButtonActionPerformed
 
     private void komaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_komaButtonActionPerformed
         // TODO add your handling code here:
         String text = textFieldKalkulator.getText();
-        if (charAwal == true && adaKoma == false)
+        if (charAwal == true && adaKoma == false) //Bilangan baru
         {
-            if (text.charAt(text.length() - 1) == '0')
+            if (text.length() == 0) //Buat diawal
+            {
+                addItem("0,");
+                adaKoma = true;
+            }
+            else if (text.charAt(text.length() - 1) == '0')
             {
                 addItem(",");
                 adaKoma = true;
             }
-            else
+            else if (text.charAt(text.length() - 1) == '%')
+            {}
+            else //Buat setelah operator
             {
                 addItem("0,");
                 adaKoma = true;
             }
         }
-        else if (charAwal == false && adaKoma == false)
+        else if (charAwal == false && adaKoma == false)//Sudah ada bilangan sebelumnya
         {
             addItem(",");
             adaKoma = true;
@@ -556,7 +715,29 @@ public class FrameKalkulator extends javax.swing.JFrame {
         // TODO add your handling code here:
         String text = textFieldKalkulator.getText();
         
-        deleteOneNumber();
+        if(text.length() == 0)
+        {}
+        if (text.length() == 1) //hapus 1 number, biar length() - 2 ga erorr dibawah itu
+        {
+            deleteOneNumber();
+            resetVar();
+        }
+        else if (text.charAt(text.length()-1) == ',') //Kalo Hapus Koma
+        {
+            deleteOneNumber();
+            adaKoma = false;
+        }
+        else if (text.charAt(text.length()-2) == 'x' || text.charAt(text.length()-2) == '÷' || 
+                text.charAt(text.length()-2) == '+' || text.charAt(text.length()-2) == '-') // Kalau delete sebelah kirinya ada op, jadi Bilangan baru
+        {
+            deleteOneNumber();
+            resetVar();
+        }
+        else //Kalau delete operator dan angka?
+        {
+            deleteOneNumber();
+            charAwal = false;
+        }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void zeroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroButtonActionPerformed
@@ -566,6 +747,8 @@ public class FrameKalkulator extends javax.swing.JFrame {
         {
             addItem("0");
         }
+        else if (text.charAt(text.length() - 1) == '%')
+        {}
         else if (text.charAt(text.length() - 1) == '0')
         {
             if(charAwal == false)
@@ -592,6 +775,8 @@ public class FrameKalkulator extends javax.swing.JFrame {
             addItem("1");
             charAwal = false;
         }
+        else if (text.charAt(text.length() - 1) == '%')
+        {}
         else if (charAwal == true && text.charAt(text.length()-1) == '0')
         {
             deleteOneNumber();
@@ -613,6 +798,8 @@ public class FrameKalkulator extends javax.swing.JFrame {
             addItem("2");
             charAwal = false;
         }
+        else if (text.charAt(text.length() - 1) == '%')
+        {}
         else if (charAwal == true && text.charAt(text.length()-1) == '0')
         {
             deleteOneNumber();
@@ -634,6 +821,8 @@ public class FrameKalkulator extends javax.swing.JFrame {
             addItem("3");
             charAwal = false;
         }
+        else if (text.charAt(text.length() - 1) == '%')
+        {}
         else if (charAwal == true && text.charAt(text.length()-1) == '0')
         {
             deleteOneNumber();
@@ -655,6 +844,8 @@ public class FrameKalkulator extends javax.swing.JFrame {
             addItem("4");
             charAwal = false;
         }
+        else if (text.charAt(text.length() - 1) == '%')
+        {}
         else if (charAwal == true && text.charAt(text.length()-1) == '0')
         {
             deleteOneNumber();
@@ -676,6 +867,8 @@ public class FrameKalkulator extends javax.swing.JFrame {
             addItem("5");
             charAwal = false;
         }
+        else if (text.charAt(text.length() - 1) == '%')
+        {}
         else if (charAwal == true && text.charAt(text.length()-1) == '0')
         {
             deleteOneNumber();
@@ -697,6 +890,8 @@ public class FrameKalkulator extends javax.swing.JFrame {
             addItem("6");
             charAwal = false;
         }
+        else if (text.charAt(text.length() - 1) == '%')
+        {}
         else if (charAwal == true && text.charAt(text.length()-1) == '0')
         {
             deleteOneNumber();
@@ -718,6 +913,8 @@ public class FrameKalkulator extends javax.swing.JFrame {
             addItem("7");
             charAwal = false;
         }
+        else if (text.charAt(text.length() - 1) == '%')
+        {}
         else if (charAwal == true && text.charAt(text.length()-1) == '0')
         {
             deleteOneNumber();
@@ -739,6 +936,8 @@ public class FrameKalkulator extends javax.swing.JFrame {
             addItem("8");
             charAwal = false;
         }
+        else if (text.charAt(text.length() - 1) == '%')
+        {}
         else if (charAwal == true && text.charAt(text.length()-1) == '0')
         {
             deleteOneNumber();
@@ -760,6 +959,8 @@ public class FrameKalkulator extends javax.swing.JFrame {
             addItem("9");
             charAwal = false;
         }
+        else if (text.charAt(text.length() - 1) == '%')
+        {}
         else if (charAwal == true && text.charAt(text.length()-1) == '0')
         {
             deleteOneNumber();
@@ -826,6 +1027,7 @@ public class FrameKalkulator extends javax.swing.JFrame {
     private javax.swing.JButton plusMinusButton;
     private javax.swing.JButton sevenButton;
     private javax.swing.JButton sixButton;
+    private javax.swing.JTextField textFieldAfterKalk;
     private javax.swing.JTextField textFieldKalkulator;
     private javax.swing.JButton threeButton;
     private javax.swing.JButton timeButton;
